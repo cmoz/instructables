@@ -9,6 +9,7 @@
     Touch INPUT on PIN A9 check your board
 
 */
+
 #include "Adafruit_GFX.h"
 #include "Adafruit_SSD1306.h"
 #include "ADCTouch.h"
@@ -71,7 +72,6 @@ void setup() {
     Serial.println("No Color Sensor found ... check your connections");
     //while (1); // halt!
   }
-
   Keyboard.begin();
 }
 
