@@ -113,13 +113,19 @@ void loop() {
   capsense[0] = CircuitPlayground.readCap(12);
   if  (capsense[0] > 100) {
     Serial.println("Touch detected CP");
+    oled.clearDisplay();          // clear display
+    oled.setTextSize(2);          // text size
+    oled.setTextColor(WHITE);     // text color
+    oled.setCursor(1, 1);        // position to display
+    oled.println("Please    Hold whileHEX copies");
+    oled.display();                // show on OLED
     Keyboard.print((int)r, HEX);
     delay(300);
     Keyboard.print((int)g, HEX);
     delay(300);
     Keyboard.print((int)b, HEX);
     Keyboard.println();
-    delay(300);
+    delay(2000);
   }
 
   Serial.print("HEX: \t");

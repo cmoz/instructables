@@ -43,7 +43,7 @@ Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 void setup() {
   Serial.begin(9600);
- 
+
   strip.begin();           // INITIALIZE NeoPixel strip object (REQUIRED)
   strip.show();            // Turn OFF all pixels ASAP
   strip.setBrightness(50); // Set BRIGHTNESS to about 1/5 (max = 255)
@@ -99,11 +99,17 @@ void loop() {
   b = blue;
   b /= sum;
   r *= 256; g *= 256; b *= 256;
-  
+
   int value0 = ADCTouch.read(touchPin);
   value0 -= ref0;
   Serial.println(value0);
   if (value0 > threshold) {
+    oled.clearDisplay();          // clear display
+    oled.setTextSize(2);          // text size
+    oled.setTextColor(WHITE);     // text color
+    oled.setCursor(1, 1);        // position to display
+    oled.println("Please    Hold whileHEX copies");
+    oled.display();                // show on OLED
     Serial.println("Touch detected");
     Keyboard.print((int)r, HEX);
     delay(300);
@@ -112,7 +118,7 @@ void loop() {
     Keyboard.print((int)b, HEX);
     Serial.println("button");
     Keyboard.println();
-    delay(300);
+    delay(2000);
   }
 
   Serial.print("HEX: \t");
@@ -134,8 +140,8 @@ void loop() {
 
 // ******************************** FUNCTIONS ******************************
 
-void runOLED(){
-  
+void runOLED() {
+
   oled.clearDisplay();          // clear display
   oled.setTextSize(1);          // text size
   oled.setTextColor(WHITE);     // text color
