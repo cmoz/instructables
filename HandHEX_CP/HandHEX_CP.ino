@@ -74,11 +74,6 @@ void setup() {
   delay(2000);         // wait for initializing
   oled.clearDisplay(); // clear display
 
-#ifdef NON_CP
-  ref0 = ADCTouch.read(touchPin, 500);
-  Serial.println("Code running for a non Circuit Playground board");
-#endif
-
   //Start-up colour sensor
   if (tcs.begin()) {
     Serial.println("Found sensor");
