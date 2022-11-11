@@ -20,8 +20,6 @@ int threshold = 500;
 
 void setup() {
   Serial.begin(115200);
-  
-  while (!Serial);
   Serial.println("FreeTouch test");
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(LED_BUILTIN, OUTPUT);
@@ -55,13 +53,12 @@ void loop() {
 
   delay(200);
 
-    if (result > threshold) {
-
+  if (result > threshold) {
    rainbowFade2White(3, 3, 1);
    strip.show();            // Turn OFF all pixels ASAP
   }
 
-    if (result2 > threshold) {
+  if (result2 > threshold) {
    colorWipe(strip.Color(  0,   0, 255)     , 50); // Blue
    strip.show();            // Turn OFF all pixels ASAP
   }
